@@ -2,7 +2,7 @@ package config
 
 import (
 	"bytes"
-	"io/ioutil"
+	"os"
 
 	"github.com/geetchoubey/awsls/pkg/types"
 	"gopkg.in/yaml.v3"
@@ -83,7 +83,7 @@ func (endpoints CustomEndpoints) GetURL(region, serviceType string) string {
 func Load(path string) (*Scanner, error) {
 	var err error
 
-	raw, err := ioutil.ReadFile(path)
+	raw, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
